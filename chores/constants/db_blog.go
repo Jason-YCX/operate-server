@@ -16,12 +16,12 @@ type Tag struct {
 	CreatedAt time.Time `json:"createdAt" gorm:"autoCreateTime"`
 }
 
-type Article struct {
+type Note struct {
 	ID          string    `json:"id" gorm:"type:varchar(255);not null;primaryKey"`
-	Title       string    `json:"title" binding:"required" gorm:"type:varchar(255);not null"`
+	Title       string    `json:"title" binding:"required" gorm:"type:varchar(255);not null;unique"`
 	Content     string    `json:"content" binding:"required" gorm:"type:text;not null"`
-	CategoryIds string    `json:"categoryIds" gorm:"type:varchar(255)"`
-	TagIds      string    `json:"tagIds" gorm:"type:varchar(255)"`
+	CategoryIds string    `json:"categoryIds" gorm:"type:text"`
+	TagIds      string    `json:"tagIds" gorm:"type:text"`
 	CreatedAt   time.Time `json:"createdAt" gorm:"autoCreateTime"`
 }
 
@@ -37,6 +37,6 @@ func (Tag) TableName() string {
 	return "tag"
 }
 
-func (Article) TableName() string {
-	return "article"
+func (Note) TableName() string {
+	return "note"
 }
