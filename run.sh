@@ -16,7 +16,7 @@ fi
 
 # 使用nohup启动新的Go程序
 echo "Starting new process"
-nohup go run $GO_PROGRAM_PATH > output.log 2>&1 &
+nohup go run $GO_PROGRAM_PATH > /dev/null 2>&1 &
 
 echo "Process started"
 
