@@ -28,4 +28,5 @@ func InitDB() {
 	myDB.Logger = myDB.Logger.LogMode(4)
 
 	InitBlog()
+	InitWheel()
 }

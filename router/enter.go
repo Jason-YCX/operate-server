@@ -11,6 +11,7 @@ func InitRouter() {
 	myGin = gin.Default()
 	myRouter = myGin.Group("/api")
 	InitBlogRouter()
+	InitWheelRouter()
 
 	myGin.Run(":9876")
 }
