@@ -8,12 +8,14 @@ type Category struct {
 	ID        string    `json:"id" gorm:"type:varchar(255);not null;primaryKey"`
 	Name      string    `json:"name" binding:"required" gorm:"type:varchar(255);not null;unique"`
 	CreatedAt time.Time `json:"createdAt" gorm:"autoCreateTime"`
+	UpdatedAt time.Time `json:"updatedAt" gorm:"autoUpdateTime"`
 }
 
 type Tag struct {
 	ID        string    `json:"id" gorm:"type:varchar(255);not null;primaryKey"`
 	Name      string    `json:"name" binding:"required" gorm:"type:varchar(255);not null;unique"`
 	CreatedAt time.Time `json:"createdAt" gorm:"autoCreateTime"`
+	UpdatedAt time.Time `json:"updatedAt" gorm:"autoUpdateTime"`
 }
 
 type Note struct {
@@ -23,6 +25,7 @@ type Note struct {
 	CategoryIds string    `json:"categoryIds" gorm:"type:text"`
 	TagIds      string    `json:"tagIds" gorm:"type:text"`
 	CreatedAt   time.Time `json:"createdAt" gorm:"autoCreateTime"`
+	UpdatedAt   time.Time `json:"updatedAt" gorm:"autoUpdateTime"`
 }
 
 type IdOpt struct {
