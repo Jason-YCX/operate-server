@@ -10,8 +10,11 @@ var myRouter *gin.RouterGroup
 func InitRouter() {
 	myGin = gin.Default()
 	myRouter = myGin.Group("/api")
+
+	myGin.Static("/go-static/audio", "./resources/mp3")
 	InitBlogRouter()
 	InitWheelRouter()
+	InitAudioRouter()
 
 	myGin.Run(":9876")
 }
