@@ -32,6 +32,12 @@ type IdOpt struct {
 	Id string
 }
 
+type NoteListOpt struct {
+	Keyword    string
+	CategoryId string
+	TagId      string
+}
+
 func (Category) TableName() string {
 	return "category"
 }

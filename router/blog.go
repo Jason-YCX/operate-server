@@ -22,9 +22,9 @@ func InitBlogRouter() {
 	blogRouter.POST("/edit-tag", EditTag)
 	blogRouter.POST("/delete-tag", DeleteTag)
 
-	blogRouter.GET("/note-list", GetNoteList)
+	blogRouter.POST("/note-list", GetNoteList)
 	blogRouter.POST("/add-note", AddNote)
-	blogRouter.POST("/aeditdd-note", EditNote)
+	blogRouter.POST("/edit-note", EditNote)
 	blogRouter.POST("/delete-note", DeleteNote)
 }
 
@@ -140,7 +140,13 @@ func DeleteTag(c *gin.Context) {
 
 // 笔记
 func GetNoteList(c *gin.Context) {
-	list, err := db.GetNoteList()
+	var opt constants.NoteListOpt
+	err := c.ShouldBindJSON(&opt)
+	if err != nil {
+		utils.SendResponse(c, http.StatusBadRequest, 400, nil)
+		return
+	}
+	list, err := db.GetNoteList(opt)
 	if err != nil {
 		utils.SendResponse(c, http.StatusBadRequest, 400, nil)
 		return

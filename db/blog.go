@@ -62,8 +62,12 @@ func DeleteTag(id string) (err error) {
 }
 
 // 笔记
-func GetNoteList() (list []constants.Note, err error) {
+func GetNoteList(opt constants.NoteListOpt) (list []constants.Note, err error) {
 	dbModel := myDB.Model(&constants.Note{}).Order("created_at DESC")
+	if opt.Keyword != "" {
+		keyword := "%" + opt.Keyword + "%"
+		dbModel = dbModel.Where("title LIKE ? OR content LIKE ?", keyword, keyword)
+	}
 	err = dbModel.Find(&list).Error
 	return list, err
 }
