@@ -29,4 +29,5 @@ func InitDB() {
 
 	InitBlog()
 	InitWheel()
+	InitLedger()
 }
