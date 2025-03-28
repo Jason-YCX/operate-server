@@ -16,6 +16,7 @@ func InitRouter() {
 	InitWheelRouter()
 	InitAudioRouter()
 	InitLedgerRouter()
+	InitWpRouter()
 
 	myGin.Run(":9876")
 }
