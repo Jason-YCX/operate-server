@@ -1,5 +1,3 @@
 output.log
 .DS_Store
-resources/kgm
-resources/ncm
-resources/qmc
+resources/*
